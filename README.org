@@ -1,0 +1,61 @@
+#+STARTUP: hidestars showall
+* Humane test output for clojure.test
+  Instead of this:
+  : FAIL in (a-test) (humane_test_output_test.clj:7)
+  : FIXME, I fail.
+  : expected: (= {:foo :bar, :baz :quux, :something "a long string?", :another-key "and another value"} {:fo :bar, :baz :quux, :something "a long string?", :another-key "and another value"})
+  :   actual: (not (= {:another-key "and another value", :foo :bar, :something "a long string?", :baz :quux} {:another-key "and another value", :something "a long string?", :fo :bar, :baz :quux}))
+  : 
+  : FAIL in (a-test) (humane_test_output_test.clj:11)
+  : FIXME, I fail.
+  : expected: (= {:foo :bar, :baz :quux} {:foo :bar, :baz :quux} {:fo :bar, :baz :quux})
+  :   actual: (not (= {:foo :bar, :baz :quux} {:foo :bar, :baz :quux} {:fo :bar, :baz :quux}))
+  : 
+  : FAIL in (a-test) (humane_test_output_test.clj:14)
+  : FIXME, I fail.
+  : expected: (list? foo)
+  :   actual: (not (list? {:another-key "and another value", :foo :bar, :something "a long string?", :baz :quux}))
+
+  You get this:
+  : FAIL in (a-test) (humane_test_output_test.clj:7)
+  : FIXME, I fail.
+  : expected:
+  : {:another-key "and another value",
+  :  :foo :bar,
+  :  :something "a long string?",
+  :  :baz :quux}
+  : 
+  : actual:
+  : {:another-key "and another value",
+  :  :something "a long string?",
+  :  :fo :bar,
+  :  :baz :quux}
+  : 
+  : diff:
+  : {:foo :bar}
+  : {:fo :bar}
+  : 
+  : FAIL in (a-test) (humane_test_output_test.clj:11)
+  : FIXME, I fail.
+  : expected:
+  : {:foo :bar, :baz :quux}
+  : 
+  : actual:
+  : ({:foo :bar, :baz :quux} {:fo :bar, :baz :quux})
+  : 
+  : FAIL in (a-test) (humane_test_output_test.clj:14)
+  : FIXME, I fail.
+  : expected:
+  : (list? foo)
+  : 
+  : actual:
+  : (not
+  :  (list?
+  :   {:another-key "and another value",
+  :    :foo :bar,
+  :    :something "a long string?",
+  :    :baz :quux}))
+** License
+  : Copyright © Paul Stadig. All rights reserved.
+  : 
+  : Distributed under the Eclipse Public License, the same as Clojure.
