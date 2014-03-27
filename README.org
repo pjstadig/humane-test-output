@@ -1,5 +1,9 @@
 #+STARTUP: hidestars showall
 * Humane test output for clojure.test
+  This library does two things:
+    1. Test output is pretty printed.
+    2. Equality assertions are also diffed.
+
   To use this library, include it in your dev profile:
   : [pjstadig/humane-test-output "0.1.0"]
   
