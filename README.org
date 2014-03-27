@@ -1,6 +1,13 @@
 #+STARTUP: hidestars showall
 * Humane test output for clojure.test
-  Instead of this:
+  To use this library, include it in your dev profile:
+  : [pjstadig/humane-test-output "0.1.0"]
+  
+  To activate it you will need to require ~pjstadig.humane-test-output~.  One
+  way to do this would be to have a ~user.clj~ file in your test classpath that
+  has ~(require 'pjstadig.humane-test-output)~ in it.
+
+  Once it is activated, instead of this:
   : FAIL in (a-test) (humane_test_output_test.clj:7)
   : FIXME, I fail.
   : expected: (= {:foo :bar, :baz :quux, :something "a long string?", :another-key "and another value"} {:fo :bar, :baz :quux, :something "a long string?", :another-key "and another value"})
