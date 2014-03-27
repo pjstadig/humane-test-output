@@ -5,7 +5,7 @@
     2. Equality assertions are also diffed.
 
   To use this library, include it in your dev profile:
-  : [pjstadig/humane-test-output "0.3.0"]
+  : [pjstadig/humane-test-output "0.4.0"]
   
   To activate it you will need to require ~pjstadig.humane-test-output~.  One
   way to do this would be to have a ~user.clj~ file in your test classpath that
