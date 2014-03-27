@@ -7,9 +7,9 @@
   To use this library, include it in your dev profile:
   : [pjstadig/humane-test-output "0.4.0"]
   
-  To activate it you will need to require ~pjstadig.humane-test-output~.  One
-  way to do this would be to have a ~user.clj~ file in your test classpath that
-  has ~(require 'pjstadig.humane-test-output)~ in it.
+  To activate it you will need to call ~pjstadig.humane-test-output/activate!~.
+  One way to do this would be to put this in a ~user.clj~ file in your test
+  classpath.
 
   Once it is activated, instead of this:
   : FAIL in (a-test) (humane_test_output_test.clj:7)
