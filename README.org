@@ -19,42 +19,36 @@
   You get this:
   : FAIL in (a-test) (humane_test_output_test.clj:7)
   : FIXME, I fail.
-  : expected:
-  : {:another-key "and another value",
-  :  :foo :bar,
-  :  :something "a long string?",
-  :  :baz :quux}
+  : expected: {:another-key "and another value",
+  :            :foo :bar,
+  :            :something "a long string?",
+  :            :baz :quux}
+  :   actual: {:fo :bar}
+  :     diff: {:baz :quux,
+  :            :something "a long string?",
+  :            :foo :bar,
+  :            :another-key "and another value"}
+  :           {:fo :bar}
   : 
-  : actual:
-  : {:another-key "and another value",
-  :  :something "a long string?",
-  :  :fo :bar,
-  :  :baz :quux}
-  : 
-  : diff:
-  : {:foo :bar}
-  : {:fo :bar}
-  : 
-  : FAIL in (a-test) (humane_test_output_test.clj:11)
+  : FAIL in (a-test) (humane_test_output_test.clj:10)
   : FIXME, I fail.
-  : expected:
-  : {:foo :bar, :baz :quux}
+  : expected: {:foo :bar, :baz :quux}
+  :   actual: {:fo :bar, :baz :quux}
+  :     diff: {:foo :bar}
+  :           {:fo :bar}
+  :   actual: {:foo :bar, :baz :quux}
+  :     diff: nil
+  :           nil
   : 
-  : actual:
-  : ({:foo :bar, :baz :quux} {:fo :bar, :baz :quux})
-  : 
-  : FAIL in (a-test) (humane_test_output_test.clj:14)
+  : FAIL in (a-test) (humane_test_output_test.clj:13)
   : FIXME, I fail.
-  : expected:
-  : (list? foo)
-  : 
-  : actual:
-  : (not
-  :  (list?
-  :   {:another-key "and another value",
-  :    :foo :bar,
-  :    :something "a long string?",
-  :    :baz :quux}))
+  : expected: (list? foo)
+  :   actual: (not
+  :            (list?
+  :             {:another-key "and another value",
+  :              :foo :bar,
+  :              :something "a long string?",
+  :              :baz :quux}))
 ** License
   : Copyright © Paul Stadig. All rights reserved.
   : 
