@@ -30,11 +30,13 @@
           (print "  actual: ")
           (when (or a b)
             (pprint actual)
-            (when a
-              (print "    diff: - ")
-              (pprint a))
+            (print "    diff:")
+            (if a
+              (do (print " - ")
+                  (pprint a)
+                  (print "          + "))
+              (print " + "))
             (when b
-              (print "          + ")
               (pprint b))))
         (do (print "  actual: ")
             (pprint actual))))))
