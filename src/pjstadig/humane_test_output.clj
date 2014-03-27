@@ -4,16 +4,17 @@
         [clojure.test]))
 
 (defmethod assert-expr '= [msg [_ a & more]]
-  `(let [a# ~a
-         more# (list ~@more)
-         result# (apply = a# more#)]
-     (if result#
-       (do-report {:type :pass, :message ~msg,
-                   :expected a#, :actual more#})
-       (do-report {:type :fail, :message ~msg,
-                   :expected a#, :actual more#,
-                   :diffs (zipmap more# (map #(take 2 (diff a# %)) more#))}))
-     result#))
+  `(let [a# ~a]
+     (if-let [more# (seq (list ~@more))]
+       (let [result# (apply = a# more#)]
+         (if result#
+           (do-report {:type :pass, :message ~msg,
+                       :expected a#, :actual more#})
+           (do-report {:type :fail, :message ~msg,
+                       :expected a#, :actual more#,
+                       :diffs (map vector more# (map #(take 2 (diff a# %)) more#))}))
+         result#)
+       (throw (Exception. "= expects more than one argument")))))
 
 (defmethod clojure.test/report :fail
   [{:keys [type expected actual diffs message] :as event}]
@@ -23,13 +24,15 @@
     (when (seq *testing-contexts*) (println (testing-contexts-str)))
     (when message (println message))
     (binding [*out* (get-pretty-writer *out*)]
-      (print "expected: ")
-      (pprint expected)
-      (if (seq diffs)
-        (doseq [[actual [a b]] diffs]
-          (print "  actual: ")
-          (when (or a b)
-            (pprint actual)
+      (let [print-expected (fn [actual]
+                             (print "expected: ")
+                             (pprint expected)
+                             (print "  actual: ")
+                             (pprint actual))]
+        (if (seq diffs)
+          (doseq [[actual [a b]] diffs
+                  :when (or a b)]
+            (print-expected actual)
             (print "    diff:")
             (if a
               (do (print " - ")
@@ -37,6 +40,5 @@
                   (print "          + "))
               (print " + "))
             (when b
-              (pprint b))))
-        (do (print "  actual: ")
-            (pprint actual))))))
+              (pprint b)))
+          (print-expected actual))))))
