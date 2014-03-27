@@ -28,10 +28,13 @@
       (if (seq diffs)
         (doseq [[actual [a b]] diffs]
           (print "  actual: ")
-          (pprint actual)
-          (print "    diff: ")
-          (pprint a)
-          (print "          ")
-          (pprint b))
+          (when (or a b)
+            (pprint actual)
+            (when a
+              (print "    diff: - ")
+              (pprint a))
+            (when b
+              (print "          + ")
+              (pprint b))))
         (do (print "  actual: ")
             (pprint actual))))))

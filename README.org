@@ -35,21 +35,18 @@
   :            :something "a long string?",
   :            :baz :quux}
   :   actual: {:fo :bar}
-  :     diff: {:baz :quux,
-  :            :something "a long string?",
-  :            :foo :bar,
-  :            :another-key "and another value"}
-  :           {:fo :bar}
+  :     diff: - {:baz :quux,
+  :              :something "a long string?",
+  :              :foo :bar,
+  :              :another-key "and another value"}
+  :           + {:fo :bar}
   : 
   : FAIL in (a-test) (humane_test_output_test.clj:10)
   : FIXME, I fail.
   : expected: {:foo :bar, :baz :quux}
   :   actual: {:fo :bar, :baz :quux}
-  :     diff: {:foo :bar}
-  :           {:fo :bar}
-  :   actual: {:foo :bar, :baz :quux}
-  :     diff: nil
-  :           nil
+  :     diff: - {:foo :bar}
+  :           + {:fo :bar}
   : 
   : FAIL in (a-test) (humane_test_output_test.clj:13)
   : FIXME, I fail.
