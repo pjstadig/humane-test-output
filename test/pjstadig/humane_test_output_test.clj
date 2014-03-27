@@ -2,6 +2,8 @@
   (:use [clojure.test]
         [pjstadig.humane-test-output]))
 
+(activate!)
+
 (deftest a-test
   (testing "FIXME, I fail."
     (is (= {:foo :bar :baz :quux :something "a long string?"
