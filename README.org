@@ -17,7 +17,7 @@
   humane test output, they can define the ~INHUMANE_TEST_OUTPUT~ environment
   variable.
 
-  Once it is activated, instead of this:
+  Once humane-test-output is activated, instead of this:
   : FAIL in (a-test) (humane_test_output_test.clj:7)
   : FIXME, I fail.
   : expected: (= {:foo :bar, :baz :quux, :something "a long string?", :another-key "and another value"} {:fo :bar, :baz :quux, :something "a long string?", :another-key "and another value"})
