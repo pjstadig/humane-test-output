@@ -63,6 +63,9 @@
   :              :foo :bar,
   :              :something "a long string?",
   :              :baz :quux}))
+
+  **BONUS FEATURE**
+  A test containing ~(is (= oops-i-only-gave-one-argument))~ will throw an exception.
 ** License
    : Copyright © Paul Stadig and Outpace Systems, Inc.  All rights reserved.
    : 
