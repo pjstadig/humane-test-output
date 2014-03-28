@@ -64,7 +64,7 @@
   :              :something "a long string?",
   :              :baz :quux}))
 ** License
-   : Copyright © Paul Stadig, Outpace, Inc.  All rights reserved.
+   : Copyright © Paul Stadig and Outpace, Inc.  All rights reserved.
    : 
    : Some small bits of code were taken from clojure.test and modified, and are
    : Copyright © Rich Hickey.  All rights reserved.
