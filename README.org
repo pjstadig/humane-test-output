@@ -11,6 +11,12 @@
   One way to do this would be to put this in a ~user.clj~ file in your test
   classpath.
 
+  This test output formatting works great with Emacs and when running Leiningen
+  in a console.  However, some IDEs are also bashing in their own versions of
+  test formatting.  If you are on a mixed team and some members need to disable
+  humane test output, they can define the INHUMANE_TEST_OUTPUT environment
+  variable.
+
   Once it is activated, instead of this:
   : FAIL in (a-test) (humane_test_output_test.clj:7)
   : FIXME, I fail.
