@@ -58,9 +58,11 @@
   :              :something "a long string?",
   :              :baz :quux}))
 ** License
-  : Copyright © Paul Stadig, Bryce Covert, Outpace, Inc.. All rights reserved.
-  : 
-  : Some small bits of code were taken from clojure.test and modified, and are
-  : Copyright © Rich Hickey.  All rights reserved.
-  : 
-  : Distributed under the Eclipse Public License, the same as Clojure.
+   : Copyright © Paul Stadig, Outpace, Inc.. All rights reserved.
+   : 
+   : Some small bits of code were taken from clojure.test and modified, and are
+   : Copyright © Rich Hickey.  All rights reserved.
+   : 
+   : Distributed under the Eclipse Public License, the same as Clojure.
+** Acknowledgements
+   I am grateful for design and implementation assistance from Bryce Covert.
