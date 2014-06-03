@@ -8,8 +8,14 @@
   : [pjstadig/humane-test-output "0.6.0"]
   
   To activate it you will need to call ~pjstadig.humane-test-output/activate!~.
-  One way to do this would be to put this in a ~user.clj~ file in your test
-  classpath.
+  The preferred way to do this with Leiningen is to use an injection in the test
+  profile for your project:
+  : (defproject foo/bar "0.1.0"
+  :   ...
+  :   :profiles {...
+  :              :test {:injections [(require 'pjstadig.humane-test-output)
+  :                                  (pjstadig.humane-test-output/activate!)]}
+  :   ...
 
   This test output formatting works great with Emacs and when running Leiningen
   in a console.  However, some IDEs are also bashing in their own versions of
