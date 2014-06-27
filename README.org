@@ -77,11 +77,13 @@
   A test containing ~(is (= oops-i-only-gave-one-argument))~ will throw an
   exception.
 ** License
-   : Copyright © Paul Stadig and Outpace Systems, Inc.  All rights reserved.
-   :
-   : Some small bits of code were taken from clojure.test and modified, and are
-   : Copyright © Rich Hickey.  All rights reserved.
-   :
-   : Distributed under the Eclipse Public License, the same as Clojure.
+   #+BEGIN_EXAMPLE
+   Copyright © Paul Stadig and Outpace Systems, Inc.  All rights reserved.
+   
+   Some small bits of code were taken from clojure.test and modified, and are
+   Copyright © Rich Hickey.  All rights reserved.
+   
+   Distributed under the Eclipse Public License, the same as Clojure.
+   #+END_EXAMPLE
 ** Acknowledgements
    I am grateful for design and implementation assistance from Bryce Covert.
