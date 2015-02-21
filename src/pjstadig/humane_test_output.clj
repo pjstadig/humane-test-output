@@ -47,7 +47,28 @@
                    (print " + "))
                  (when b
                    (pp/pprint b)))
-               (print-expected actual)))))))))
+               (print-expected actual))))))
+     ;; this code is just yanked from clojure.pprint
+     (defmethod pp/simple-dispatch clojure.lang.IRecord [arec]
+       (pp/pprint-logical-block
+        :prefix (str "#" (.getName (class arec)) "{") :suffix "}"
+        (pp/print-length-loop
+         [aseq (seq arec)]
+         (when aseq
+           (pp/pprint-logical-block
+            (pp/write-out (ffirst aseq))
+            (.write ^java.io.Writer *out* " ")
+            (pp/pprint-newline :linear)
+            ;; [pjs] this is kind of ugly, but it is a private var :(
+            (.set #'pp/*current-length* 0) ; always print both parts of the [k v] pair
+            (pp/write-out (fnext (first aseq))))
+           (when (next aseq)
+             (.write ^java.io.Writer *out* ", ")
+             (pp/pprint-newline :linear)
+             (recur (next aseq)))))))
+     (prefer-method pp/simple-dispatch
+                    clojure.lang.IRecord
+                    clojure.lang.IPersistentMap))))
 
 (defn activate! []
   @activation-body)
