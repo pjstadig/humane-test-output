@@ -36,8 +36,7 @@
                                   (print "  actual: ")
                                   (pp/pprint actual))]
              (if (seq diffs)
-               (doseq [[actual [a b]] diffs
-                       :when (or a b)]
+               (doseq [[actual [a b]] diffs]
                  (print-expected actual)
                  (print "    diff:")
                  (if a
