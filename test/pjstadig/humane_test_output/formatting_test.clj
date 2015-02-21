@@ -1,7 +1,7 @@
-(ns pjstadig.humane-test-output-test
+(ns pjstadig.humane-test-output.formatting-test
   (:use [clojure.test]))
 
-(deftest a-test
+(deftest t-formatting
   (testing "FIXME, I fail."
     (is (= {:foo :bar :baz :quux :something "a long string?"
             :another-key "and another value"}
