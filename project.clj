@@ -1,4 +1,4 @@
-(defproject pjstadig/humane-test-output "0.6.0"
+(defproject pjstadig/humane-test-output "0.7.0-SNAPSHOT"
   :description "Humane test output for clojure.test"
   :url "http://github.com/pjstadig/humane-test-output/"
   :license {:name "Eclipse Public License"
