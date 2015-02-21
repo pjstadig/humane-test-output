@@ -1,8 +1,5 @@
 (ns pjstadig.humane-test-output-test
-  (:use [clojure.test]
-        [pjstadig.humane-test-output]))
-
-(activate!)
+  (:use [clojure.test]))
 
 (deftest a-test
   (testing "FIXME, I fail."
