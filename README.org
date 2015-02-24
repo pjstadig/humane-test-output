@@ -9,7 +9,7 @@
   the :user profile in your ~/.lein/profiles.clj:
   
   #+BEGIN_EXAMPLE
-  {:user {:dependencies [[pjstadig/humane-test-output "0.6.0"]]
+  {:user {:dependencies [[pjstadig/humane-test-output "0.7.0"]]
           :injections [(require 'pjstadig.humane-test-output)
                        (pjstadig.humane-test-output/activate!)]}}
   #+END_EXAMPLE
