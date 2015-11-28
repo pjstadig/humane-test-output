@@ -17,3 +17,10 @@
     (let [foo {:foo :bar :baz :quux :something "a long string?"
                :another-key "and another value"}]
       (is (list? foo)))))
+
+(defmacro deftest+
+  [test-name expected actual]
+  `(deftest ~test-name
+     (is (= ~expected ~actual))))
+
+(deftest+ t-macro-wrapping 1 2)
