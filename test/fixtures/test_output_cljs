@@ -1,0 +1,171 @@
+Compiling ClojureScript...
+Running ClojureScript test: test
+
+Testing pjstadig.humane-test-output.formatting-test
+
+FAIL in (t-formatting) (:)
+FIXME, I fail.
+expected: 
+{:foo :bar,
+ :baz :quux,
+ :something "a long string?", 
+ :another-key "and another value"}
+
+  actual: 
+{:fo :bar}
+
+    diff:
+ - 
+{:foo :bar,
+ :baz :quux,
+ :something "a long string?", 
+ :another-key "and another value"}
+
+          + 
+{:fo :bar}
+
+
+FAIL in (t-formatting) (:)
+FIXME, I fail.
+expected: 
+{:foo :bar,
+ :baz :quux,
+ :something "a long string?", 
+ :another-key "and another value"}
+
+  actual: 
+{:foo :bar}
+
+    diff:
+ - 
+{:baz :quux,
+ :something "a long string?", 
+ :another-key "and another value"}
+
+          + 
+
+FAIL in (t-formatting) (:)
+FIXME, I fail.
+expected: 
+{:foo :bar}
+
+  actual: 
+{:foo :bar,
+ :baz :quux,
+ :something "a long string?", 
+ :another-key "and another value"}
+
+    diff:
+ + 
+{:baz :quux,
+ :something "a long string?", 
+ :another-key "and another value"}
+
+
+FAIL in (t-formatting) (:)
+FIXME, I fail.
+expected: 
+{:foo :bar, :baz :quux}
+
+  actual: 
+{:foo :bar, :baz :quux}
+
+    diff:
+ + 
+expected: 
+{:foo :bar, :baz :quux}
+
+  actual: 
+{:fo :bar, :baz :quux}
+
+    diff:
+ - 
+{:foo :bar}
+
+          + 
+{:fo :bar}
+
+expected: 
+{:foo :bar, :baz :quux}
+
+  actual: 
+{:fo :bar, :baz :quux}
+
+    diff:
+ - 
+{:foo :bar}
+
+          + 
+{:fo :bar}
+
+
+FAIL in (t-formatting) (:)
+FIXME, I fail.
+expected: 
+(list? foo)
+
+  actual: 
+(not
+ (list?
+  {:foo :bar,
+   :baz :quux,
+   :something "a long string?", 
+   :another-key "and another value"}))
+
+
+FAIL in (t-macro-wrapping) (:)
+
+expected: 
+(clojure.core/= 1 2)
+
+  actual: 
+(not (clojure.core/= 1 2))
+
+
+Testing pjstadig.humane-test-output.records-test
+
+FAIL in (t-records) (:)
+these should not print as plain maps
+expected: 
+ 
+##pjstadig.humane-test-output.records-test.ARecord{:foo :foo}{:foo:foo}
+
+  actual: 
+ 
+##pjstadig.humane-test-output.records-test.ARecord{:foo :bar}{:foo:bar}
+
+    diff:
+ - 
+{:foo :foo}
+
+          + 
+{:foo :bar}
+
+
+FAIL in (t-records) (:)
+there should be a diff here
+expected: 
+ 
+##pjstadig.humane-test-output.records-test.ARecord{:foo :foo}{:foo:foo}
+
+  actual: 
+{:foo :foo}
+
+    diff:
+ + 
+
+FAIL in (t-records) (:)
+and here
+expected: 
+ 
+##pjstadig.humane-test-output.records-test.ARecord{:foo :foo}{:foo:foo}
+
+  actual: 
+ 
+##pjstadig.humane-test-output.records-test.BRecord{:foo :foo}{:foo:foo}
+
+    diff:
+ + 
+
+Ran 3 tests containing 9 assertions.
+9 failures, 0 errors.

@@ -1,0 +1,106 @@
+
+lein test pjstadig.humane-test-output.formatting-test
+
+lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
+
+FAIL in (t-formatting) (formatting_test.clj:6)
+FIXME, I fail.
+expected: {:foo :bar,
+           :baz :quux,
+           :something "a long string?",
+           :another-key "and another value"}
+  actual: {:fo :bar}
+    diff: - {:foo :bar,
+             :baz :quux,
+             :something "a long string?",
+             :another-key "and another value"}
+          + {:fo :bar}
+
+lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
+
+FAIL in (t-formatting) (formatting_test.clj:9)
+FIXME, I fail.
+expected: {:foo :bar,
+           :baz :quux,
+           :something "a long string?",
+           :another-key "and another value"}
+  actual: {:foo :bar}
+    diff: - {:baz :quux,
+             :something "a long string?",
+             :another-key "and another value"}
+
+lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
+
+FAIL in (t-formatting) (formatting_test.clj:12)
+FIXME, I fail.
+expected: {:foo :bar}
+  actual: {:foo :bar,
+           :baz :quux,
+           :something "a long string?",
+           :another-key "and another value"}
+    diff: + {:baz :quux,
+             :something "a long string?",
+             :another-key "and another value"}
+
+lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
+
+FAIL in (t-formatting) (formatting_test.clj:15)
+FIXME, I fail.
+expected: {:foo :bar, :baz :quux}
+  actual: {:foo :bar, :baz :quux}
+    diff: + expected: {:foo :bar, :baz :quux}
+  actual: {:fo :bar, :baz :quux}
+    diff: - {:foo :bar}
+          + {:fo :bar}
+expected: {:foo :bar, :baz :quux}
+  actual: {:fo :bar, :baz :quux}
+    diff: - {:foo :bar}
+          + {:fo :bar}
+
+lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
+
+FAIL in (t-formatting) (formatting_test.clj:19)
+FIXME, I fail.
+expected: (list? foo)
+  actual: (not
+           (list?
+            {:foo :bar,
+             :baz :quux,
+             :something "a long string?",
+             :another-key "and another value"}))
+
+lein test :only pjstadig.humane-test-output.formatting-test/t-macro-wrapping
+
+FAIL in (t-macro-wrapping) (formatting_test.clj:26)
+expected: 1
+  actual: 2
+    diff: - 1
+          + 2
+
+lein test pjstadig.humane-test-output.records-test
+
+lein test :only pjstadig.humane-test-output.records-test/t-records
+
+FAIL in (t-records) (records_test.clj:9)
+these should not print as plain maps
+expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
+  actual: #pjstadig.humane_test_output.records_test.ARecord{:foo :bar}
+    diff: - {:foo :foo}
+          + {:foo :bar}
+
+lein test :only pjstadig.humane-test-output.records-test/t-records
+
+FAIL in (t-records) (records_test.clj:11)
+there should be a diff here
+expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
+  actual: {:foo :foo}
+
+lein test :only pjstadig.humane-test-output.records-test/t-records
+
+FAIL in (t-records) (records_test.clj:13)
+and here
+expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
+  actual: #pjstadig.humane_test_output.records_test.BRecord{:foo :foo}
+
+Ran 3 tests containing 9 assertions.
+9 failures, 0 errors.

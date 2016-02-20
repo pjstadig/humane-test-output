@@ -10,3 +10,4 @@
 /pom.xml
 *jar
 *.asc
+/resources/public/js/compiled/
