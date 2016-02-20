@@ -7,9 +7,9 @@
      (if-let [more# (seq (list ~@more))]
        (let [result# (apply = a# more#)]
          (if result#
-           (cljs.test/do-report {:type :pass, :message ~msg,
+           (~'cljs.test/do-report {:type :pass, :message ~msg,
                        :expected a#, :actual more#})
-           (cljs.test/do-report {:type :fail, :message ~msg,
+           (~'cljs.test/do-report {:type :fail, :message ~msg,
                        :expected a#, :actual more#,
                        :diffs (map vector
                                    more#
@@ -19,5 +19,8 @@
        (throw (Exception. "= expects more than one argument")))))
 
 (defmethod assert-expr '= [menv msg [_ a & more]]
+  (=-body msg a more))
+
+(defmethod assert-expr 'cljs.core/= [menv msg [_ a & more]]
   (=-body msg a more))
 

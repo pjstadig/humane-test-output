@@ -1,6 +1,6 @@
 (ns pjstadig.run-all
   (:require [cljs.test
-             :refer [inc-report-counter! testing-vars-str testing-contexts-str get-current-env]
+             :refer [inc-report-counter! testing-vars-str testing-contexts-str get-current-env do-report]
              :refer-macros [run-all-tests run-tests]]
             [pjstadig.humane-test-output.formatting-test]
             [pjstadig.humane-test-output.records-test]
@@ -13,7 +13,7 @@
 
 (defn pprint-record [arec]
   (pp/pprint-logical-block
-    :prefix (str "#" (with-out-str (print arec)) "{") :suffix "}"
+    :prefix (re-find #".*?\{" (with-out-str (print arec))) :suffix "}"
     (pp/print-length-loop
       [aseq (seq arec)]
       (when aseq

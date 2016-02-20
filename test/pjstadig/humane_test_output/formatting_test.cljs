@@ -1,6 +1,5 @@
 (ns pjstadig.humane-test-output.formatting-test
   (:use [clojure.data :only [diff]])
-  (:require [cljs.test :refer [do-report]])
   (:require-macros [cljs.test :refer [deftest testing is]]
                    [pjstadig.macro :refer [deftest+]]))
 
