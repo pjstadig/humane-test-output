@@ -1,6 +1,8 @@
 (ns pjstadig.util
-  (:require #?(:clj  [clojure.pprint :as pp]
-               :cljs [cljs.pprint :as pp :include-macros true])))
+  #?(:clj (:use [clojure.test]))
+  (:require #?@(:clj  [[clojure.pprint :as pp]]
+                :cljs [[cljs.pprint :as pp :include-macros true]
+                       [cljs.test :refer [inc-report-counter! testing-vars-str testing-contexts-str get-current-env]]])))
 
 (defn- print-seq [aseq]
   (pp/pprint-logical-block
@@ -26,4 +28,40 @@
           (print ", ")
           (pp/pprint-newline :linear)
           (recur (next aseq)))))))
+
+(defn- report-
+    [{:keys [type expected actual diffs message] :as event}]
+      #?(:clj  (inc-report-counter :fail)
+         :cljs (inc-report-counter! :fail))
+      (println "\nFAIL in" (testing-vars-str event))
+      (when #?(:clj  (seq *testing-contexts*)
+               :cljs (:testing-contexts (get-current-env)))
+            (println (testing-contexts-str)))
+      (when message (println message))
+      (binding [*out* (pp/get-pretty-writer *out*)]
+        (let [print-expected (fn [actual]
+                               (print "expected: ")
+                               (pp/pprint expected)
+                               (print "  actual: ")
+                               (pp/pprint actual))]
+          (if (seq diffs)
+            (doseq [[actual [a b]] diffs]
+              (print-expected actual)
+              (print "    diff:")
+              (if a
+                (do (print " - ")
+                  (pp/pprint a)
+                  (print "          + "))
+                (print " + "))
+              (when b
+                (pp/pprint b)))
+            (print-expected actual)))))
+
+(defn define-fail-report []
+  #?(:clj (defmethod report :fail [& args]
+            (with-test-out
+            (apply report- args)))
+    :cljs (defmethod cljs.test/report [:cljs.test/default :fail]
+            [& args]
+            (apply report- args))))
 

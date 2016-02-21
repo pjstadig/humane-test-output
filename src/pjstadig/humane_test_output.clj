@@ -29,31 +29,7 @@
      (defmethod assert-expr 'clojure.core/= [msg [_ a & more]]
        (=-body msg a more))
 
-     (defmethod report :fail
-       [{:keys [type expected actual diffs message] :as event}]
-       (with-test-out
-         (inc-report-counter :fail)
-         (println "\nFAIL in" (testing-vars-str event))
-         (when (seq *testing-contexts*) (println (testing-contexts-str)))
-         (when message (println message))
-         (binding [*out* (pp/get-pretty-writer *out*)]
-           (let [print-expected (fn [actual]
-                                  (print "expected: ")
-                                  (pp/pprint expected)
-                                  (print "  actual: ")
-                                  (pp/pprint actual))]
-             (if (seq diffs)
-               (doseq [[actual [a b]] diffs]
-                 (print-expected actual)
-                 (print "    diff:")
-                 (if a
-                   (do (print " - ")
-                       (pp/pprint a)
-                       (print "          + "))
-                   (print " + "))
-                 (when b
-                   (pp/pprint b)))
-               (print-expected actual))))))
+     (define-fail-report)
      ;; this code is just yanked from clojure.pprint
      (defmethod pp/simple-dispatch clojure.lang.IRecord [arec]
        (pprint-record arec))
