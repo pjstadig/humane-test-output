@@ -3,7 +3,7 @@ lein test pjstadig.humane-test-output.formatting-test
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.clj:6)
+FAIL in (t-formatting) (formatting_test.cljc:9)
 FIXME, I fail.
 expected: {:foo :bar,
            :baz :quux,
@@ -18,7 +18,7 @@ expected: {:foo :bar,
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.clj:9)
+FAIL in (t-formatting) (formatting_test.cljc:12)
 FIXME, I fail.
 expected: {:foo :bar,
            :baz :quux,
@@ -31,7 +31,7 @@ expected: {:foo :bar,
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.clj:12)
+FAIL in (t-formatting) (formatting_test.cljc:15)
 FIXME, I fail.
 expected: {:foo :bar}
   actual: {:foo :bar,
@@ -44,7 +44,7 @@ expected: {:foo :bar}
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.clj:15)
+FAIL in (t-formatting) (formatting_test.cljc:18)
 FIXME, I fail.
 expected: {:foo :bar, :baz :quux}
   actual: {:foo :bar, :baz :quux}
@@ -59,7 +59,7 @@ expected: {:foo :bar, :baz :quux}
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.clj:19)
+FAIL in (t-formatting) (formatting_test.cljc:22)
 FIXME, I fail.
 expected: (list? foo)
   actual: (not
@@ -71,7 +71,7 @@ expected: (list? foo)
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-macro-wrapping
 
-FAIL in (t-macro-wrapping) (formatting_test.clj:26)
+FAIL in (t-macro-wrapping) (formatting_test.cljc:24)
 expected: 1
   actual: 2
     diff: - 1
@@ -81,7 +81,7 @@ lein test pjstadig.humane-test-output.records-test
 
 lein test :only pjstadig.humane-test-output.records-test/t-records
 
-FAIL in (t-records) (records_test.clj:9)
+FAIL in (t-records) (records_test.cljc:10)
 these should not print as plain maps
 expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
   actual: #pjstadig.humane_test_output.records_test.ARecord{:foo :bar}
@@ -90,17 +90,19 @@ expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
 
 lein test :only pjstadig.humane-test-output.records-test/t-records
 
-FAIL in (t-records) (records_test.clj:11)
+FAIL in (t-records) (records_test.cljc:12)
 there should be a diff here
 expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
   actual: {:foo :foo}
 
 lein test :only pjstadig.humane-test-output.records-test/t-records
 
-FAIL in (t-records) (records_test.clj:13)
+FAIL in (t-records) (records_test.cljc:14)
 and here
 expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
   actual: #pjstadig.humane_test_output.records_test.BRecord{:foo :foo}
+
+lein test pjstadig.macro
 
 Ran 3 tests containing 9 assertions.
 9 failures, 0 errors.

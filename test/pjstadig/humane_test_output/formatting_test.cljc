@@ -1,5 +1,8 @@
 (ns pjstadig.humane-test-output.formatting-test
-  (:use [clojure.test]))
+  #?(:clj  (:use [clojure.test]
+                 [pjstadig.macro])
+     :cljs (:require-macros [cljs.test :refer [deftest testing is]]
+                            [pjstadig.macro :refer [deftest+]])))
 
 (deftest t-formatting
   (testing "FIXME, I fail."
@@ -17,10 +20,5 @@
     (let [foo {:foo :bar :baz :quux :something "a long string?"
                :another-key "and another value"}]
       (is (list? foo)))))
-
-(defmacro deftest+
-  [test-name expected actual]
-  `(deftest ~test-name
-     (is (= ~expected ~actual))))
 
 (deftest+ t-macro-wrapping 1 2)

@@ -1,5 +1,6 @@
 (ns pjstadig.humane-test-output.records-test
-  (:require-macros [cljs.test :refer [deftest testing is]]))
+  #?(:clj  (:use [clojure.test])
+     :cljs (:require-macros [cljs.test :refer [deftest testing is]])))
 
 (defrecord ARecord [foo])
 (defrecord BRecord [foo])
