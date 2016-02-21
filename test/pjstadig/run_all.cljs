@@ -6,34 +6,17 @@
             [pjstadig.humane-test-output.records-test]
             [clojure.data :refer [diff]]
             [cljs.pprint :as pp]
-            [pjstadig.macro :refer [do-report]])
+            [pjstadig.macro :refer [do-report]]
+            [pjstadig.util :as util])
   (:require-macros [pjstadig.assert-expr]))
 
 (enable-console-print!)
 
 (def pprint-map (get-method pp/simple-dispatch :map))
 
-(defn pprint-record [arec]
-  (pp/pprint-logical-block
-    :prefix (re-find #".*?\{" (with-out-str (print arec))) :suffix "}"
-    (pp/print-length-loop
-      [aseq (seq arec)]
-      (when aseq
-        (pp/pprint-logical-block
-          (pp/write-out (ffirst aseq))
-          (print " ")
-          (pp/pprint-newline :linear)
-          ;; [pjs] this is kind of ugly, but it is a private var :(
-          (set! pp/*current-length* 0) ; always print both parts of the [k v] pair
-          (pp/write-out (fnext (first aseq))))
-        (when (next aseq)
-          (print ", ")
-          (pp/pprint-newline :linear)
-          (recur (next aseq)))))))
-
 (defmethod pp/simple-dispatch :map [amap]
   (if (record? amap)
-    (pprint-record amap)
+    (util/pprint-record amap)
     (pprint-map amap)))
 
 (defmethod cljs.test/report [:cljs.test/default :fail]
