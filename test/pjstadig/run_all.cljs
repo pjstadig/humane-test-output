@@ -2,7 +2,6 @@
   (:require [cljs.test :refer-macros [run-all-tests run-tests]]
             [pjstadig.humane-test-output.formatting-test]
             [pjstadig.humane-test-output.records-test]
-            [clojure.data :refer [diff]]
             [cljs.pprint :as pp]
             [pjstadig.macro :refer [do-report]]
             [pjstadig.util :as util])
