@@ -1,10 +1,12 @@
 (ns pjstadig.run-all
   (:require [cljs.test
-             :refer [inc-report-counter! testing-vars-str testing-contexts-str get-current-env do-report]
+             :refer [inc-report-counter! testing-vars-str testing-contexts-str get-current-env]
              :refer-macros [run-all-tests run-tests]]
             [pjstadig.humane-test-output.formatting-test]
             [pjstadig.humane-test-output.records-test]
-            [cljs.pprint :as pp])
+            [clojure.data :refer [diff]]
+            [cljs.pprint :as pp]
+            [pjstadig.macro :refer [do-report]])
   (:require-macros [pjstadig.assert-expr]))
 
 (enable-console-print!)

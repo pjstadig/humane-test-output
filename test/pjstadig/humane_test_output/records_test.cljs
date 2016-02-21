@@ -1,5 +1,4 @@
 (ns pjstadig.humane-test-output.records-test
-  (:use [clojure.data :only [diff]])
   (:require-macros [cljs.test :refer [deftest testing is]]))
 
 (defrecord ARecord [foo])
