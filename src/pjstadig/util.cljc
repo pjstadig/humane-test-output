@@ -1,7 +1,9 @@
 (ns pjstadig.util
   #?(:clj (:use [clojure.test]))
-  (:require #?@(:clj  [[clojure.pprint :as pp]]
+  (:require #?@(:clj  [[clojure.pprint :as pp]
+                       [pjstadig.macro :as m]]
                 :cljs [[cljs.pprint :as pp :include-macros true]
+                       [pjstadig.macro :as m :include-macros true]
                        [cljs.test :refer [inc-report-counter! testing-vars-str testing-contexts-str get-current-env]]]))
   #?(:cljs (:import [goog.string StringBuffer])))
 
@@ -83,11 +85,32 @@
                         (.clear sb))
                       (print-expected actual)))))))
 
+(defn- convert-event [{:keys [actual expected] :as event}]
+  (let [diffs (when (and (seq? actual)
+                         (seq actual)
+                         (= 'not (first actual))
+                         (seq? (second actual))
+                         (seq (second actual))
+                         (#{'clojure.core/= '=} (first (second actual)))
+                         (< 2 (count (second actual))))
+                (let [a (nth (second actual) 1)
+                      more (drop 2 (second actual))]
+                  (map vector
+                       more
+                       (map #(take 2 (m/diff a %)) more))))
+        expected (if (seq diffs)
+                   (nth (second actual) 1)
+                   expected)]
+    (assoc event
+           :diffs diffs
+           :expected expected)))
+
+
 (defn define-fail-report []
-  #?(:clj (defmethod report :fail [& args]
+  #?(:clj (defmethod report :fail [event]
             (with-test-out
-            (apply report- args)))
+            (report- (convert-event event))))
     :cljs (defmethod cljs.test/report [:cljs.test/default :fail]
-            [& args]
-            (apply report- args))))
+            [event]
+            (report- (convert-event event)))))
 
