@@ -5,7 +5,7 @@ lein test pjstadig.humane-test-output.formatting-test
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:10)
+FAIL in (t-formatting) (formatting_test.cljc:9)
 FIXME, I fail.
 expected: {:foo :bar,
            :baz :quux,
@@ -20,7 +20,7 @@ expected: {:foo :bar,
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:13)
+FAIL in (t-formatting) (formatting_test.cljc:12)
 FIXME, I fail.
 expected: {:foo :bar,
            :baz :quux,
@@ -33,7 +33,7 @@ expected: {:foo :bar,
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:16)
+FAIL in (t-formatting) (formatting_test.cljc:15)
 FIXME, I fail.
 expected: {:foo :bar}
   actual: {:foo :bar,
@@ -46,7 +46,7 @@ expected: {:foo :bar}
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:19)
+FAIL in (t-formatting) (formatting_test.cljc:18)
 FIXME, I fail.
 expected: {:foo :bar, :baz :quux}
   actual: {:foo :bar, :baz :quux}
@@ -61,7 +61,7 @@ expected: {:foo :bar, :baz :quux}
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:23)
+FAIL in (t-formatting) (formatting_test.cljc:22)
 FIXME, I fail.
 expected: (list? foo)
   actual: (not
@@ -73,7 +73,7 @@ expected: (list? foo)
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-macro-wrapping
 
-FAIL in (t-macro-wrapping) (formatting_test.cljc:25)
+FAIL in (t-macro-wrapping) (formatting_test.cljc:24)
 expected: 1
   actual: 2
     diff: - 1
