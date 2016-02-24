@@ -1,4 +1,4 @@
-(ns pjstadig.macro)
+(ns pjstadig.fixtures.macro)
 
 (defmacro deftest+
   [test-name expected actual]

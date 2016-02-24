@@ -6,6 +6,6 @@
   (apply data/diff args))
 
 (defn do-report [& args]
-  (apply cljs.test/do-report args))
+  #?(:cljs (apply cljs.test/do-report args)))
 
 
