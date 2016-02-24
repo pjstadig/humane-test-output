@@ -4,7 +4,7 @@ Running ClojureScript test: test
 Testing pjstadig.humane-test-output.formatting-test
 
 FAIL in (t-formatting) (:)
-FIXME, I fail.
+THESE TESTS ARE INTENDED TO FAIL
 expected: 
 {:foo :bar,
  :baz :quux,
@@ -26,7 +26,7 @@ expected:
 
 
 FAIL in (t-formatting) (:)
-FIXME, I fail.
+THESE TESTS ARE INTENDED TO FAIL
 expected: 
 {:foo :bar,
  :baz :quux,
@@ -45,7 +45,7 @@ expected:
           + 
 
 FAIL in (t-formatting) (:)
-FIXME, I fail.
+THESE TESTS ARE INTENDED TO FAIL
 expected: 
 {:foo :bar}
 
@@ -63,7 +63,7 @@ expected:
 
 
 FAIL in (t-formatting) (:)
-FIXME, I fail.
+THESE TESTS ARE INTENDED TO FAIL
 expected: 
 {:foo :bar, :baz :quux}
 
@@ -100,7 +100,7 @@ expected:
 
 
 FAIL in (t-formatting) (:)
-FIXME, I fail.
+THESE TESTS ARE INTENDED TO FAIL
 expected: 
 (list? foo)
 
@@ -115,6 +115,7 @@ expected:
 
 FAIL in (t-macro-wrapping) (:)
 
+THIS ONE SHOULD ALSO FAIL
 expected: 
 (clojure.core/= 1 2)
 
@@ -125,7 +126,7 @@ expected:
 Testing pjstadig.humane-test-output.records-test
 
 FAIL in (t-records) (:)
-these should not print as plain maps
+THESE TESTS ARE INTENDED TO FAIL these should not print as plain maps
 expected: 
  
 #pjstadig.humane-test-output.records-test.ARecord{:foo:foo}
@@ -143,7 +144,7 @@ expected:
 
 
 FAIL in (t-records) (:)
-there should be a diff here
+THESE TESTS ARE INTENDED TO FAIL there should be a diff here
 expected: 
  
 #pjstadig.humane-test-output.records-test.ARecord{:foo:foo}
@@ -155,7 +156,7 @@ expected:
  + 
 
 FAIL in (t-records) (:)
-and here
+THESE TESTS ARE INTENDED TO FAIL and here
 expected: 
  
 #pjstadig.humane-test-output.records-test.ARecord{:foo:foo}
@@ -167,5 +168,5 @@ expected:
     diff:
  + 
 
-Ran 3 tests containing 9 assertions.
+Ran 4 tests containing 10 assertions.
 9 failures, 0 errors.

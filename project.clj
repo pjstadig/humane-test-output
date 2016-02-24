@@ -4,6 +4,9 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :deploy-repositories [["releases" :clojars]]
+  :test-selectors
+  {:default (complement :intentionally-failing)
+   :yes-i-know-the-tests-are-supposed-to-fail :intentionally-failing}
   :profiles {:dev {:dependencies [[org.clojure/clojure "1.8.0"]
                                   [org.clojure/clojurescript "1.7.228"]
                                   [org.seleniumhq.selenium/selenium-java "2.52.0"]

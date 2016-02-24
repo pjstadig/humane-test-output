@@ -1,12 +1,10 @@
 
-lein test pjstadig.fixtures.macro
-
 lein test pjstadig.humane-test-output.formatting-test
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:9)
-FIXME, I fail.
+FAIL in (t-formatting) (formatting_test.cljc:12)
+THESE TESTS ARE INTENDED TO FAIL
 expected: {:foo :bar,
            :baz :quux,
            :something "a long string?",
@@ -20,8 +18,8 @@ expected: {:foo :bar,
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:12)
-FIXME, I fail.
+FAIL in (t-formatting) (formatting_test.cljc:15)
+THESE TESTS ARE INTENDED TO FAIL
 expected: {:foo :bar,
            :baz :quux,
            :something "a long string?",
@@ -33,8 +31,8 @@ expected: {:foo :bar,
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:15)
-FIXME, I fail.
+FAIL in (t-formatting) (formatting_test.cljc:18)
+THESE TESTS ARE INTENDED TO FAIL
 expected: {:foo :bar}
   actual: {:foo :bar,
            :baz :quux,
@@ -46,8 +44,8 @@ expected: {:foo :bar}
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:18)
-FIXME, I fail.
+FAIL in (t-formatting) (formatting_test.cljc:21)
+THESE TESTS ARE INTENDED TO FAIL
 expected: {:foo :bar, :baz :quux}
   actual: {:foo :bar, :baz :quux}
     diff: + expected: {:foo :bar, :baz :quux}
@@ -61,8 +59,8 @@ expected: {:foo :bar, :baz :quux}
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:22)
-FIXME, I fail.
+FAIL in (t-formatting) (formatting_test.cljc:25)
+THESE TESTS ARE INTENDED TO FAIL
 expected: (list? foo)
   actual: (not
            (list?
@@ -73,7 +71,8 @@ expected: (list? foo)
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-macro-wrapping
 
-FAIL in (t-macro-wrapping) (formatting_test.cljc:24)
+FAIL in (t-macro-wrapping) (formatting_test.cljc:27)
+THIS ONE SHOULD ALSO FAIL
 expected: 1
   actual: 2
     diff: - 1
@@ -83,8 +82,8 @@ lein test pjstadig.humane-test-output.records-test
 
 lein test :only pjstadig.humane-test-output.records-test/t-records
 
-FAIL in (t-records) (records_test.cljc:10)
-these should not print as plain maps
+FAIL in (t-records) (records_test.cljc:11)
+THESE TESTS ARE INTENDED TO FAIL these should not print as plain maps
 expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
   actual: #pjstadig.humane_test_output.records_test.ARecord{:foo :bar}
     diff: - {:foo :foo}
@@ -92,15 +91,15 @@ expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
 
 lein test :only pjstadig.humane-test-output.records-test/t-records
 
-FAIL in (t-records) (records_test.cljc:12)
-there should be a diff here
+FAIL in (t-records) (records_test.cljc:13)
+THESE TESTS ARE INTENDED TO FAIL there should be a diff here
 expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
   actual: {:foo :foo}
 
 lein test :only pjstadig.humane-test-output.records-test/t-records
 
-FAIL in (t-records) (records_test.cljc:14)
-and here
+FAIL in (t-records) (records_test.cljc:15)
+THESE TESTS ARE INTENDED TO FAIL and here
 expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
   actual: #pjstadig.humane_test_output.records_test.BRecord{:foo :foo}
 

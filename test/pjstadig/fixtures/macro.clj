@@ -3,5 +3,5 @@
 (defmacro deftest+
   [test-name expected actual]
   `(~'deftest ~test-name
-     (~'is (= ~expected ~actual))))
+     (~'is (= ~expected ~actual) "THIS ONE SHOULD ALSO FAIL")))
 
