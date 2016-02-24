@@ -1,9 +1,8 @@
 (ns pjstadig.humane-test-output.formatting-test
-  #?@(:clj  [(:use [clojure.test]
-                   [pjstadig.fixtures.macro])]
-      :cljs [(:require [cljs.test :refer [do-report]])
-             (:require-macros [cljs.test :refer [deftest testing is]]
-                              [pjstadig.fixtures.macro :refer [deftest+]])]))
+  #?(:clj  (:use [clojure.test]
+                 [pjstadig.fixtures.macro])
+     :cljs (:require-macros [cljs.test :refer [deftest testing is]]
+                            [pjstadig.fixtures.macro :refer [deftest+]])))
 
 (deftest t-formatting
   (testing "FIXME, I fail."
