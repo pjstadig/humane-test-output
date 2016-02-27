@@ -128,12 +128,10 @@ Testing pjstadig.humane-test-output.records-test
 FAIL in (t-records) (:)
 THESE TESTS ARE INTENDED TO FAIL these should not print as plain maps
 expected: 
- 
-#pjstadig.humane-test-output.records-test.ARecord{:foo:foo}
+#pjstadig.humane-test-output.records-test.ARecord{:foo :foo}
 
   actual: 
- 
-#pjstadig.humane-test-output.records-test.ARecord{:foo:bar}
+#pjstadig.humane-test-output.records-test.ARecord{:foo :bar}
 
     diff:
  - 
@@ -146,8 +144,7 @@ expected:
 FAIL in (t-records) (:)
 THESE TESTS ARE INTENDED TO FAIL there should be a diff here
 expected: 
- 
-#pjstadig.humane-test-output.records-test.ARecord{:foo:foo}
+#pjstadig.humane-test-output.records-test.ARecord{:foo :foo}
 
   actual: 
 {:foo :foo}
@@ -158,12 +155,10 @@ expected:
 FAIL in (t-records) (:)
 THESE TESTS ARE INTENDED TO FAIL and here
 expected: 
- 
-#pjstadig.humane-test-output.records-test.ARecord{:foo:foo}
+#pjstadig.humane-test-output.records-test.ARecord{:foo :foo}
 
   actual: 
- 
-#pjstadig.humane-test-output.records-test.BRecord{:foo:foo}
+#pjstadig.humane-test-output.records-test.BRecord{:foo :foo}
 
     diff:
  + 

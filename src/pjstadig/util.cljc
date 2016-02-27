@@ -7,7 +7,8 @@
 (defn- print-seq [aseq]
   (pp/pprint-logical-block
     (pp/write-out (ffirst aseq))
-    (print " ")
+    #?(:clj (print " ")
+       :cljs (-write *out* " "))
     (pp/pprint-newline :linear)
     ;; [pjs] this is kind of ugly, but it is a private var :(
     ;; always print both parts of the [k v] pair
