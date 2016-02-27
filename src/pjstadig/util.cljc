@@ -52,8 +52,8 @@
                       (print "    diff:")
                       (if a
                         (do (print " - ")
-                          (pp/pprint a)
-                          (print "          + "))
+                            (pp/pprint a)
+                            (print "          + "))
                         (print " + "))
                       (when b
                         (pp/pprint b)))
