@@ -77,8 +77,11 @@ expected: (list? foo)
 FAIL in (t-macro-wrapping) (:)
 
 THIS ONE SHOULD ALSO FAIL
-expected: (clojure.core/= 1 2)
-  actual: (not (clojure.core/= 1 2))
+expected: 1
+  actual: 2
+
+    diff: - 1
+          + 2
 
 
 Testing pjstadig.humane-test-output.records-test

@@ -22,6 +22,6 @@
 #?(:clj (defmethod assert-expr '= [menv msg [_ a & more]]
           (=-body msg a more)))
 
-#?(:clj (defmethod assert-expr 'cljs.core/= [menv msg [_ a & more]]
+#?(:clj (defmethod assert-expr 'clojure.core/= [menv msg [_ a & more]]
           (=-body msg a more)))
 
