@@ -2,7 +2,8 @@
   #?(:clj (:use [clojure.test]))
   (:require #?@(:clj  [[clojure.pprint :as pp]]
                 :cljs [[cljs.pprint :as pp :include-macros true]
-                       [cljs.test :refer [inc-report-counter! testing-vars-str testing-contexts-str get-current-env]]])))
+                       [cljs.test :refer [inc-report-counter! testing-vars-str testing-contexts-str get-current-env]]]))
+  #?(:cljs (:import [goog.string StringBuffer])))
 
 (defn- print-seq [aseq]
   (pp/pprint-logical-block
@@ -39,24 +40,48 @@
                :cljs (:testing-contexts (get-current-env)))
             (println (testing-contexts-str)))
       (when message (println message))
-      (binding [*out* (pp/get-pretty-writer *out*)]
-        (let [print-expected (fn [actual]
-                               (print "expected: ")
-                               (pp/pprint expected)
-                               (print "  actual: ")
-                               (pp/pprint actual))]
-          (if (seq diffs)
-            (doseq [[actual [a b]] diffs]
-              (print-expected actual)
-              (print "    diff:")
-              (if a
-                (do (print " - ")
-                  (pp/pprint a)
-                  (print "          + "))
-                (print " + "))
-              (when b
-                (pp/pprint b)))
-            (print-expected actual)))))
+      #?(:clj (binding [*out* (pp/get-pretty-writer *out*)]
+                (let [print-expected (fn [actual]
+                                       (print "expected: ")
+                                       (pp/pprint expected)
+                                       (print "  actual: ")
+                                       (pp/pprint actual))]
+                  (if (seq diffs)
+                    (doseq [[actual [a b]] diffs]
+                      (print-expected actual)
+                      (print "    diff:")
+                      (if a
+                        (do (print " - ")
+                          (pp/pprint a)
+                          (print "          + "))
+                        (print " + "))
+                      (when b
+                        (pp/pprint b)))
+                    (print-expected actual))))
+        :cljs (let [sb (StringBuffer.)]
+                (binding [*out* (pp/get-pretty-writer (StringBufferWriter. sb))]
+                  (let [print-expected (fn [actual]
+                                         (-write *out* "expected: ")
+                                         (pp/pprint expected *out*)
+                                         (-write *out* "  actual: ")
+                                         (pp/pprint actual *out*)
+                                         (*print-fn* (str sb))
+                                         (.clear sb)
+                        )]
+                    (if (seq diffs)
+                      (doseq [[actual [a b]] diffs]
+                        (print-expected actual)
+                        (-write *out* "    diff:")
+                        (if a
+                          (do (-write *out* " - ")
+                            (pp/pprint a *out*)
+                            (-write *out* "          + "))
+                          (-write *out* " + "))
+                        (when b
+                          (pp/pprint b *out*))
+                        (*print-fn* (str sb))
+                        (.clear sb))
+                      (print-expected actual)))))))
 
 (defn define-fail-report []
   #?(:clj (defmethod report :fail [& args]

@@ -5,163 +5,106 @@ Testing pjstadig.humane-test-output.formatting-test
 
 FAIL in (t-formatting) (:)
 THESE TESTS ARE INTENDED TO FAIL
-expected: 
-{:foo :bar,
- :baz :quux,
- :something "a long string?", 
- :another-key "and another value"}
+expected: {:foo :bar,
+           :baz :quux,
+           :something "a long string?",
+           :another-key "and another value"}
+  actual: {:fo :bar}
 
-  actual: 
-{:fo :bar}
-
-    diff:
- - 
-{:foo :bar,
- :baz :quux,
- :something "a long string?", 
- :another-key "and another value"}
-
-          + 
-{:fo :bar}
+    diff: - {:foo :bar,
+             :baz :quux,
+             :something "a long string?",
+             :another-key "and another value"}
+          + {:fo :bar}
 
 
 FAIL in (t-formatting) (:)
 THESE TESTS ARE INTENDED TO FAIL
-expected: 
-{:foo :bar,
- :baz :quux,
- :something "a long string?", 
- :another-key "and another value"}
+expected: {:foo :bar,
+           :baz :quux,
+           :something "a long string?",
+           :another-key "and another value"}
+  actual: {:foo :bar}
 
-  actual: 
-{:foo :bar}
-
-    diff:
- - 
-{:baz :quux,
- :something "a long string?", 
- :another-key "and another value"}
-
-          + 
-
-FAIL in (t-formatting) (:)
-THESE TESTS ARE INTENDED TO FAIL
-expected: 
-{:foo :bar}
-
-  actual: 
-{:foo :bar,
- :baz :quux,
- :something "a long string?", 
- :another-key "and another value"}
-
-    diff:
- + 
-{:baz :quux,
- :something "a long string?", 
- :another-key "and another value"}
+    diff: - {:baz :quux,
+             :something "a long string?",
+             :another-key "and another value"}
 
 
 FAIL in (t-formatting) (:)
 THESE TESTS ARE INTENDED TO FAIL
-expected: 
-{:foo :bar, :baz :quux}
+expected: {:foo :bar}
+  actual: {:foo :bar,
+           :baz :quux,
+           :something "a long string?",
+           :another-key "and another value"}
 
-  actual: 
-{:foo :bar, :baz :quux}
-
-    diff:
- + 
-expected: 
-{:foo :bar, :baz :quux}
-
-  actual: 
-{:fo :bar, :baz :quux}
-
-    diff:
- - 
-{:foo :bar}
-
-          + 
-{:fo :bar}
-
-expected: 
-{:foo :bar, :baz :quux}
-
-  actual: 
-{:fo :bar, :baz :quux}
-
-    diff:
- - 
-{:foo :bar}
-
-          + 
-{:fo :bar}
+    diff: + {:baz :quux,
+             :something "a long string?",
+             :another-key "and another value"}
 
 
 FAIL in (t-formatting) (:)
 THESE TESTS ARE INTENDED TO FAIL
-expected: 
-(list? foo)
+expected: {:foo :bar, :baz :quux}
+  actual: {:foo :bar, :baz :quux}
 
-  actual: 
-(not
- (list?
-  {:foo :bar,
-   :baz :quux,
-   :something "a long string?", 
-   :another-key "and another value"}))
+
+    diff: + expected: {:foo :bar, :baz :quux}
+  actual: {:fo :bar, :baz :quux}
+
+    diff: - {:foo :bar}
+          + {:fo :bar}
+
+expected: {:foo :bar, :baz :quux}
+  actual: {:fo :bar, :baz :quux}
+
+    diff: - {:foo :bar}
+          + {:fo :bar}
+
+
+FAIL in (t-formatting) (:)
+THESE TESTS ARE INTENDED TO FAIL
+expected: (list? foo)
+  actual: (not
+           (list?
+            {:foo :bar,
+             :baz :quux,
+             :something "a long string?",
+             :another-key "and another value"}))
 
 
 FAIL in (t-macro-wrapping) (:)
 
 THIS ONE SHOULD ALSO FAIL
-expected: 
-(clojure.core/= 1 2)
-
-  actual: 
-(not (clojure.core/= 1 2))
+expected: (clojure.core/= 1 2)
+  actual: (not (clojure.core/= 1 2))
 
 
 Testing pjstadig.humane-test-output.records-test
 
 FAIL in (t-records) (:)
 THESE TESTS ARE INTENDED TO FAIL these should not print as plain maps
-expected: 
-#pjstadig.humane-test-output.records-test.ARecord{:foo :foo}
+expected: #pjstadig.humane-test-output.records-test.ARecord{:foo :foo}
+  actual: #pjstadig.humane-test-output.records-test.ARecord{:foo :bar}
 
-  actual: 
-#pjstadig.humane-test-output.records-test.ARecord{:foo :bar}
-
-    diff:
- - 
-{:foo :foo}
-
-          + 
-{:foo :bar}
+    diff: - {:foo :foo}
+          + {:foo :bar}
 
 
 FAIL in (t-records) (:)
 THESE TESTS ARE INTENDED TO FAIL there should be a diff here
-expected: 
-#pjstadig.humane-test-output.records-test.ARecord{:foo :foo}
+expected: #pjstadig.humane-test-output.records-test.ARecord{:foo :foo}
+  actual: {:foo :foo}
 
-  actual: 
-{:foo :foo}
 
-    diff:
- + 
 
 FAIL in (t-records) (:)
 THESE TESTS ARE INTENDED TO FAIL and here
-expected: 
-#pjstadig.humane-test-output.records-test.ARecord{:foo :foo}
+expected: #pjstadig.humane-test-output.records-test.ARecord{:foo :foo}
+  actual: #pjstadig.humane-test-output.records-test.BRecord{:foo :foo}
 
-  actual: 
-#pjstadig.humane-test-output.records-test.BRecord{:foo :foo}
 
-    diff:
- + 
 
 Ran 4 tests containing 10 assertions.
 9 failures, 0 errors.
