@@ -1,5 +1,5 @@
 (ns pjstadig.macro
-  (:require [cljs.test]
+  (:require #?(:cljs [cljs.test])
             [clojure.data :as data :include-macros true]))
 
 (defn diff [& args]
