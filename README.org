@@ -1,3 +1,5 @@
+[[https://api.travis-ci.org/pjstadig/humane-test-output.png?branch=master]]
+
 #+STARTUP: hidestars showall
 * Humane test output for clojure.test
   This library does two things:
