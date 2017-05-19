@@ -6,20 +6,21 @@
 
 (defn =-body
   [msg a more]
-  `(let [a# ~a]
-     (if-let [more# (seq (list ~@more))]
-       (let [result# (apply = a# more#)]
-         (if result#
-           (do-report {:type :pass, :message ~msg,
-                       :expected a#, :actual more#})
-           (do-report {:type :fail, :message ~msg,
-                       :expected a#, :actual more#,
-                       :diffs (map vector
-                                   more#
-                                   (map #(take 2 (data/diff a# %))
-                                        more#))}))
-         result#)
-       (throw (Exception. "= expects more than one argument")))))
+  (if (seq more)
+    `(let [a# ~a
+           more# (seq (list ~@more))
+           result# (apply = a# more#)]
+       (if result#
+         (do-report {:type :pass, :message ~msg,
+                     :expected a#, :actual more#})
+         (do-report {:type :fail, :message ~msg,
+                     :expected a#, :actual more#,
+                     :diffs (map vector
+                                 more#
+                                 (map #(take 2 (data/diff a# %))
+                                      more#))}))
+       result#)
+    `(throw (Exception. "= expects more than one argument"))))
 
 (defonce activation-body
   (delay
