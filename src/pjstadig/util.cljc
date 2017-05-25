@@ -42,10 +42,19 @@
       (when message (println message))
       #?(:clj (binding [*out* (pp/get-pretty-writer *out*)]
                 (let [print-expected (fn [actual]
+                                       (let [only-in-a (clojure.string/replace actual #"Only in A: (.*)($|Only in B:.*)" "$1")
+                                             only-in-b (clojure.string/replace actual #"Only in A: (.*)($|Only in B:.*)" "$2")]
                                        (print "expected: ")
                                        (pp/pprint expected)
-                                       (print "  actual: ")
-                                       (pp/pprint actual))]
+                                       (println "  actual:")
+                                       (print "Only in A: ")
+                                       (pp/pprint (when (not (clojure.string/blank? only-in-a))
+                                                    (read-string only-in-a)))
+                                       (print "Only in B: ")
+                                       (pp/pprint (when (not (clojure.string/blank? only-in-b))
+                                                    (read-string only-in-b)))
+                                         )
+                                       )]
                   (if (seq diffs)
                     (doseq [[actual [a b]] diffs]
                       (print-expected actual)
