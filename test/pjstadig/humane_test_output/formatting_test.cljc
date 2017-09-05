@@ -5,7 +5,13 @@
                             [pjstadig.fixtures.macro :refer [deftest+]])))
 
 (deftest t-nothing-to-see-here
-  (is true "everything should be A-OK"))
+  (is true "everything should be A-OK")
+  (is (= :clojure.spec.alpha/invalid
+         :clojure.spec.alpha/invalid)
+      "everything should be A-OK")
+  (is (= :clojure.spec/invalid
+         :clojure.spec/invalid)
+      "everything should be A-OK"))
 
 (deftest ^:intentionally-failing t-formatting
   (testing "THESE TESTS ARE INTENDED TO FAIL"
