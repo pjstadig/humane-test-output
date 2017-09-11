@@ -4,7 +4,7 @@
 
 (defn =-body
   [msg a more]
-  `(let [a# ~a]
+  `(let [a# (do ~a)]
      (if-let [more# (seq (list ~@more))]
        (let [result# (apply = a# more#)]
          (if result#
