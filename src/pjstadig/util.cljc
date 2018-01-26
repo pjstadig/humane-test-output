@@ -31,7 +31,7 @@
           (pp/pprint-newline :linear)
           (recur (next aseq)))))))
 
-(defn- report-
+(defn report-
     [{:keys [type expected actual diffs message] :as event}]
       #?(:clj  (inc-report-counter :fail)
          :cljs (inc-report-counter! :fail))
