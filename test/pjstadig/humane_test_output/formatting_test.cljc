@@ -31,3 +31,6 @@
       (is (list? foo)))))
 
 (deftest+ ^:intentionally-failing t-macro-wrapping 1 2)
+
+#?(:clj (deftest ^:intentionally-failing non-seq-actual
+          (clojure.test/report {:type :fail :expected 4 :actual 5} )))
