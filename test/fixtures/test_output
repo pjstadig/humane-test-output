@@ -3,7 +3,7 @@ lein test pjstadig.humane-test-output.formatting-test
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:12)
+FAIL in (t-formatting) (formatting_test.cljc:18)
 THESE TESTS ARE INTENDED TO FAIL
 expected: {:foo :bar,
            :baz :quux,
@@ -18,7 +18,7 @@ expected: {:foo :bar,
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:15)
+FAIL in (t-formatting) (formatting_test.cljc:21)
 THESE TESTS ARE INTENDED TO FAIL
 expected: {:foo :bar,
            :baz :quux,
@@ -31,7 +31,7 @@ expected: {:foo :bar,
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:18)
+FAIL in (t-formatting) (formatting_test.cljc:24)
 THESE TESTS ARE INTENDED TO FAIL
 expected: {:foo :bar}
   actual: {:foo :bar,
@@ -44,7 +44,7 @@ expected: {:foo :bar}
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:21)
+FAIL in (t-formatting) (formatting_test.cljc:27)
 THESE TESTS ARE INTENDED TO FAIL
 expected: {:foo :bar, :baz :quux}
   actual: {:foo :bar, :baz :quux}
@@ -59,7 +59,7 @@ expected: {:foo :bar, :baz :quux}
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
-FAIL in (t-formatting) (formatting_test.cljc:25)
+FAIL in (t-formatting) (formatting_test.cljc:31)
 THESE TESTS ARE INTENDED TO FAIL
 expected: (list? foo)
   actual: (not
@@ -71,7 +71,7 @@ expected: (list? foo)
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-macro-wrapping
 
-FAIL in (t-macro-wrapping) (formatting_test.cljc:27)
+FAIL in (t-macro-wrapping) (formatting_test.cljc:33)
 THIS ONE SHOULD ALSO FAIL
 expected: 1
   actual: 2
