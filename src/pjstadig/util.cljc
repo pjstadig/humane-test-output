@@ -1,21 +1,23 @@
 (ns pjstadig.util
   #?(:clj (:use [clojure.test]))
-  (:require #?@(:clj  [[clojure.pprint :as pp]]
-                :cljs [[cljs.pprint :as pp :include-macros true]
-                       [cljs.test :refer [inc-report-counter! testing-vars-str testing-contexts-str get-current-env]]]))
+  (:require
+   #?@(:clj  [[clojure.pprint :as pp]
+              [pjstadig.print :as p]]
+       :cljs [[cljs.pprint :as pp :include-macros true]
+              [pjstadig.print :as p]
+              [cljs.test :refer [inc-report-counter! testing-vars-str testing-contexts-str get-current-env]]]))
   #?(:cljs (:import [goog.string StringBuffer])))
 
 (defn- print-seq [aseq]
   (pp/pprint-logical-block
-    (pp/write-out (ffirst aseq))
-    #?(:clj (print " ")
-       :cljs (-write *out* " "))
-    (pp/pprint-newline :linear)
-    ;; [pjs] this is kind of ugly, but it is a private var :(
-    ;; always print both parts of the [k v] pair
-    #?(:clj  (.set #'pp/*current-length* 0)
-       :cljs (set! pp/*current-length* 0))
-    (pp/write-out (fnext (first aseq)))))
+   (pp/write-out (ffirst aseq))
+   (p/rprint " ")
+   (pp/pprint-newline :linear)
+   ;; [pjs] this is kind of ugly, but it is a private var :(
+   ;; always print both parts of the [k v] pair
+   #?(:clj  (.set #'pp/*current-length* 0)
+      :cljs (set! pp/*current-length* 0))
+   (pp/write-out (fnext (first aseq)))))
 
 
 (defn pprint-record [arec]
@@ -40,48 +42,26 @@
                :cljs (:testing-contexts (get-current-env)))
             (println (testing-contexts-str)))
       (when message (println message))
-      #?(:clj (binding [*out* (pp/get-pretty-writer *out*)]
-                (let [print-expected (fn [actual]
-                                       (print "expected: ")
-                                       (pp/pprint expected)
-                                       (print "  actual: ")
-                                       (pp/pprint actual))]
-                  (if (seq diffs)
-                    (doseq [[actual [a b]] diffs]
-                      (print-expected actual)
-                      (print "    diff:")
-                      (if a
-                        (do (print " - ")
-                            (pp/pprint a)
-                            (print "          + "))
-                        (print " + "))
-                      (when b
-                        (pp/pprint b)))
-                    (print-expected actual))))
-        :cljs (let [sb (StringBuffer.)]
-                (binding [*out* (pp/get-pretty-writer (StringBufferWriter. sb))]
-                  (let [print-expected (fn [actual]
-                                         (-write *out* "expected: ")
-                                         (pp/pprint expected *out*)
-                                         (-write *out* "  actual: ")
-                                         (pp/pprint actual *out*)
-                                         (*print-fn* (str sb))
-                                         (.clear sb)
-                        )]
-                    (if (seq diffs)
-                      (doseq [[actual [a b]] diffs]
-                        (print-expected actual)
-                        (-write *out* "    diff:")
-                        (if a
-                          (do (-write *out* " - ")
-                            (pp/pprint a *out*)
-                            (-write *out* "          + "))
-                          (-write *out* " + "))
-                        (when b
-                          (pp/pprint b *out*))
-                        (*print-fn* (str sb))
-                        (.clear sb))
-                      (print-expected actual)))))))
+  (p/with-pretty-writer (fn []
+                          (let [print-expected (fn [actual]
+                                                 (p/rprint "expected: ")
+                                                 (pp/pprint expected *out*)
+                                                 (p/rprint "  actual: ")
+                                                 (pp/pprint actual *out*)
+                                                 (p/clear))]
+                            (if (seq diffs)
+                              (doseq [[actual [a b]] diffs]
+                                (print-expected actual)
+                                (p/rprint "    diff:")
+                                (if a
+                                  (do (p/rprint " - ")
+                                      (pp/pprint a *out*)
+                                      (p/rprint "          + "))
+                                  (p/rprint " + "))
+                                (when b
+                                  (pp/pprint b *out*))
+                                (p/clear))
+                              (print-expected actual))))))
 
 (defn define-fail-report []
   #?(:clj (defmethod report :fail [& args]

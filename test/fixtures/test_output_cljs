@@ -109,5 +109,5 @@ expected: #pjstadig.humane-test-output.records-test.ARecord{:foo :foo}
 
 
 
-Ran 4 tests containing 10 assertions.
+Ran 4 tests containing 12 assertions.
 9 failures, 0 errors.
