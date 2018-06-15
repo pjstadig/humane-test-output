@@ -66,8 +66,7 @@
 (defn define-fail-report []
   #?(:clj (defmethod report :fail [& args]
             (with-test-out
-            (apply report- args)))
+            (report- (first args))))
     :cljs (defmethod cljs.test/report [:cljs.test/default :fail]
-            [& args]
-            (apply report- args))))
-
+            [event]
+            (report- (p/convert-event event)))))
