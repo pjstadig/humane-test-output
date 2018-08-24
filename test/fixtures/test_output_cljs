@@ -1,5 +1,3 @@
-Compiling ClojureScript...
-Running ClojureScript test: test
 
 Testing pjstadig.humane-test-output.formatting-test
 
@@ -109,5 +107,17 @@ expected: #pjstadig.humane-test-output.records-test.ARecord{:foo :foo}
 
 
 
-Ran 4 tests containing 12 assertions.
-9 failures, 0 errors.
+Testing pjstadig.humane-test-output.reporting-test
+
+FAIL in (cljs-smoke-test) (:)
+
+this is a smoke test
+expected: {:map "srt"}
+  actual: {:map 1}
+
+    diff: - {:map "srt"}
+          + {:map 1}
+
+
+Ran 5 tests containing 13 assertions.
+10 failures, 0 errors.

@@ -1,5 +1,10 @@
-
 lein test pjstadig.humane-test-output.formatting-test
+
+lein test :only pjstadig.humane-test-output.formatting-test/non-seq-actual
+
+FAIL in (non-seq-actual) (:)
+expected: 4
+  actual: 5
 
 lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
 
@@ -103,5 +108,5 @@ THESE TESTS ARE INTENDED TO FAIL and here
 expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
   actual: #pjstadig.humane_test_output.records_test.BRecord{:foo :foo}
 
-Ran 3 tests containing 9 assertions.
-9 failures, 0 errors.
+Ran 4 tests containing 10 assertions.
+10 failures, 0 errors.
