@@ -1,7 +1,7 @@
 (ns pjstadig.humane-test-output
   (:use [clojure.test]
         [pjstadig.util])
-  (:require [clojure.data :as data]
+  (:require [lambdaisland.deep-diff :as deep]
             [clojure.pprint :as pp]))
 
 (defn =-body
@@ -15,10 +15,8 @@
                      :expected a#, :actual more#})
          (do-report {:type :fail, :message ~msg,
                      :expected a#, :actual more#,
-                     :diffs (map vector
-                                 more#
-                                 (map #(take 2 (data/diff a# %))
-                                      more#))}))
+                     :diffs (map #(vector % (deep/diff a# %))
+                                 more#)}))
        result#)
     `(throw (Exception. "= expects more than one argument"))))
 

@@ -34,3 +34,8 @@
 
 #?(:clj (deftest ^:intentionally-failing non-seq-actual
           (clojure.test/report {:type :fail :expected 4 :actual 5} )))
+
+(deftest test-deep-diff
+  (let [a [1 2 {:a 1 :b 2}]
+        b [1 0 {:a 1 :b 0 :c 3}]]
+    (is (= a b))))

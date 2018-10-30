@@ -2,7 +2,8 @@
   #?(:clj (:use [clojure.test]))
   (:require
    #?@(:clj  [[clojure.pprint :as pp]
-              [pjstadig.print :as p]]
+              [pjstadig.print :as p]
+              [lambdaisland.deep-diff :as deep]]
        :cljs [[cljs.pprint :as pp :include-macros true]
               [pjstadig.print :as p]
               [cljs.test :refer [inc-report-counter! testing-vars-str testing-contexts-str get-current-env]]]))
@@ -45,21 +46,16 @@
   (p/with-pretty-writer (fn []
                           (let [print-expected (fn [actual]
                                                  (p/rprint "expected: ")
-                                                 (pp/pprint expected *out*)
+                                                 (deep/pretty-print expected)
                                                  (p/rprint "  actual: ")
-                                                 (pp/pprint actual *out*)
+                                                 (deep/pretty-print actual)
                                                  (p/clear))]
                             (if (seq diffs)
-                              (doseq [[actual [a b]] diffs]
+                              (doseq [[actual diff] diffs]
                                 (print-expected actual)
                                 (p/rprint "    diff:")
-                                (if a
-                                  (do (p/rprint " - ")
-                                      (pp/pprint a *out*)
-                                      (p/rprint "          + "))
-                                  (p/rprint " + "))
-                                (when b
-                                  (pp/pprint b *out*))
+                                (p/rprint " ")
+                                (deep/pretty-print diff)
                                 (p/clear))
                               (print-expected actual))))))
 
