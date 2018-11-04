@@ -4,7 +4,6 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :deploy-repositories [["releases" :clojars]]
-  :plugins [[lein-localrepo "0.5.4"]]
   :test-selectors
   {:default (complement :intentionally-failing)
    :yes-i-know-the-tests-are-supposed-to-fail :intentionally-failing}
