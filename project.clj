@@ -1,6 +1,6 @@
-(defproject pjstadig/humane-test-output "0.8.4-SNAPSHOT"
-  :description "Humane test output for clojure.test"
-  :url "http://github.com/pjstadig/humane-test-output/"
+(defproject org.clojars.tristefigure.temp_forks/humane-test-output "0.8.4-SNAPSHOT"
+  :description "Fork of humane-test-output. See: https://github.com/pjstadig/humane-test-output/pull/34."
+  :url "https://github.com/TristeFigure/humane-test-output"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :deploy-repositories [["releases" :clojars]]
