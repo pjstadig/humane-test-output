@@ -8,5 +8,15 @@ before_install:
 
 script:
     - lein test :yes-i-know-the-tests-are-supposed-to-fail 2> diff test/fixtures/test_output -
-    - lein cljsbuild test 2>&1 | grep --invert-match '_JAVA_OPTIONS' | grep --invert-match 'ClojureScript' | diff test/fixtures/test_output_cljs -
-    - lumo -c $(lein classpath) -i test/pjstadig/run_all.cljs -e '(pjstadig.run-all/run)' | sed -e 's/(at evalmachine.<anonymous>.*)/(:)/' | diff test/fixtures/test_output_cljs -
+    - >
+      lein doo phantom test once 2>&1 |
+      | grep --invert-match 'TypeError'
+      | grep --invert-match 'Subprocess'
+      | grep --invert-match ';;'
+      | sed -e 's/(cljs\/test\.js.*)/(:)/'
+      | tail -n +4
+      | diff test/fixtures/test_output_cljs -
+    - >
+      lumo -c $(lein classpath) -i test/pjstadig/run_self_host.cljs -e '(pjstadig.run-self-host/run)'
+      | sed -e 's/(at evalmachine.<anonymous>.*)/(:)/'
+      | diff test/fixtures/test_output_cljs -
