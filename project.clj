@@ -8,17 +8,19 @@
   {:default (complement :intentionally-failing)
    :yes-i-know-the-tests-are-supposed-to-fail :intentionally-failing}
   :profiles {:dev {:dependencies [[org.clojure/clojure "1.8.0"]
-                                  [org.clojure/clojurescript "1.7.228"]
+                                  [org.clojure/clojurescript "1.10.516"]
                                   [org.seleniumhq.selenium/selenium-java "2.52.0"]
                                   [com.codeborne/phantomjsdriver "1.2.1"]]
-                   :plugins [[lein-cljsbuild "1.1.2"]]
-                   :cljsbuild {:test-commands {"test" ["phantomjs" "dev-resources/test/phantom/run.js" "dev-resources/test/test.html"]}
-                               :builds [{:id "test"
+                   :plugins [[lein-cljsbuild "1.1.7"]
+                             [lein-doo "0.1.10"]]
+                   :cljsbuild {:builds [{:id "test"
                                          :source-paths ["src" "test"]
                                          :compiler {:main pjstadig.run-all
-                                                    :asset-path "../../target/cljsbuild/js/compiled/test/out"
-                                                    :output-to "target/cljsbuild/js/compiled/humanize-test-output-test.js"
-                                                    :output-dir "target/cljsbuild/js/compiled/test/out"
-                                                    :source-map-timestamp true}}]}}
+                                                    :target :browser
+                                                    :optimizations :none
+                                                    :output-to "target/js/compiled/humanize-test-output-test.js"
+                                                    :output-dir "target"
+                                                    :source-map-timestamp true
+                                                    :warnings {:private-var-access false}}}]}}
              :test {:injections [(require 'pjstadig.humane-test-output)
                                  (pjstadig.humane-test-output/activate!)]}})

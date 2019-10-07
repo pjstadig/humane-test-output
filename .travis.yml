@@ -1,12 +1,9 @@
 language: clojure
 
-before_script:
-    - lein cljsbuild once
-
 before_install:
     - npm install lumo-cljs@1.8.0 -g
 
 script:
-    - lein test :yes-i-know-the-tests-are-supposed-to-fail 2> diff test/fixtures/test_output -
-    - lein cljsbuild test 2>&1 | grep --invert-match '_JAVA_OPTIONS' | grep --invert-match 'ClojureScript' | diff test/fixtures/test_output_cljs -
-    - lumo -c $(lein classpath) -i test/pjstadig/run_all.cljs -e '(pjstadig.run-all/run)' | sed -e 's/(at evalmachine.<anonymous>.*)/(:)/' | diff test/fixtures/test_output_cljs -
+    - lein test :yes-i-know-the-tests-are-supposed-to-fail 2>&1 | diff test/fixtures/test_output -
+    - ./.travis/phantom-test
+    - ./.travis/lumo-test

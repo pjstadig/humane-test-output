@@ -1,5 +1,5 @@
-(ns pjstadig.run-all
-  (:require [doo.runner :as doo :include-macros true]
+(ns pjstadig.run-self-host
+  (:require [cljs.test :refer-macros [run-all-tests]]
             [pjstadig.humane-test-output]
             [pjstadig.humane-test-output.formatting-test]
             [pjstadig.humane-test-output.records-test]
@@ -7,4 +7,5 @@
 
 (enable-console-print!)
 
-(doo/doo-all-tests #"pjstadig.*-test")
+(defn ^:export run []
+  (run-all-tests #"pjstadig.*-test"))

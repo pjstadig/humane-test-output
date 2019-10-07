@@ -1,3 +1,4 @@
+
 lein test pjstadig.humane-test-output.formatting-test
 
 lein test :only pjstadig.humane-test-output.formatting-test/non-seq-actual
@@ -87,7 +88,7 @@ lein test pjstadig.humane-test-output.records-test
 
 lein test :only pjstadig.humane-test-output.records-test/t-records
 
-FAIL in (t-records) (records_test.cljc:11)
+FAIL in (t-records) (records_test.cljc:10)
 THESE TESTS ARE INTENDED TO FAIL these should not print as plain maps
 expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
   actual: #pjstadig.humane_test_output.records_test.ARecord{:foo :bar}
@@ -96,17 +97,18 @@ expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
 
 lein test :only pjstadig.humane-test-output.records-test/t-records
 
-FAIL in (t-records) (records_test.cljc:13)
+FAIL in (t-records) (records_test.cljc:12)
 THESE TESTS ARE INTENDED TO FAIL there should be a diff here
 expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
   actual: {:foo :foo}
 
 lein test :only pjstadig.humane-test-output.records-test/t-records
 
-FAIL in (t-records) (records_test.cljc:15)
+FAIL in (t-records) (records_test.cljc:14)
 THESE TESTS ARE INTENDED TO FAIL and here
 expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
   actual: #pjstadig.humane_test_output.records_test.BRecord{:foo :foo}
 
 Ran 4 tests containing 10 assertions.
 10 failures, 0 errors.
+Tests failed.

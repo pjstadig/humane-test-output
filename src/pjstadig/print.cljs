@@ -3,18 +3,18 @@
             [pjstadig.macro :as m])
   (:import [goog.string StringBuffer]))
 
-(def ^:dynamic *sb*)
+;; fix #37 - https://github.com/pjstadig/humane-test-output/issues/37
+(defonce ^:private sb (StringBuffer.))
 
 (defn rprint [s]
-  (-write *out* s))
+  (cljs.core/-write *out* s))
 
 (defn clear []
-  (*print-fn* (str *sb*))
-  (.clear *sb*))
+  (*print-fn* (.toString sb))
+  (.clear sb))
 
 (defn with-pretty-writer [f]
-  (binding [*sb* (StringBuffer.)
-            *out* (pp/get-pretty-writer (StringBufferWriter. *sb*))]
+  (binding [*out* (pp/get-pretty-writer (StringBufferWriter. sb))]
     (f)))
 
 (defn convert-event [{:keys [actual expected] :as event}]
