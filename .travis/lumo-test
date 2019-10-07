@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+lumo -c $(lein classpath) -i test/pjstadig/run_self_host.cljs -e '(pjstadig.run-self-host/run)' \
+      | sed -e 's/(at evalmachine.<anonymous>.*)/(:)/' \
+      | tail -n +2 \
+      | diff test/fixtures/test_output_cljs -

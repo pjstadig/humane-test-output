@@ -1,0 +1,9 @@
+#/usr/bin/env bash
+
+lein doo phantom test once 2>&1 \
+      | grep --invert-match 'TypeError' \
+      | grep --invert-match 'Subprocess' \
+      | grep --invert-match ';;' \
+      | sed -e 's/(cljs\/test\.js.*)/(:)/' \
+      | tail -n +4 \
+      | diff test/fixtures/test_output_cljs -
