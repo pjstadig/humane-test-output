@@ -28,7 +28,9 @@
            {:fo :bar :baz :quux}))
     (let [foo {:foo :bar :baz :quux :something "a long string?"
                :another-key "and another value"}]
-      (is (list? foo)))))
+      (is (list? foo)))
+    (is (= {:foo :bar}
+           nil))))
 
 (deftest+ ^:intentionally-failing t-macro-wrapping 1 2)
 
