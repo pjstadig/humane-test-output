@@ -71,6 +71,12 @@ expected: (list? foo)
              :another-key "and another value"}))
 
 
+FAIL in (t-formatting) (:)
+THESE TESTS ARE INTENDED TO FAIL
+expected: {:foo :bar}
+  actual: nil
+
+
 FAIL in (t-macro-wrapping) (:)
 
 THIS ONE SHOULD ALSO FAIL
@@ -118,5 +124,5 @@ expected: {:map "srt"}
           + {:map 1}
 
 
-Ran 5 tests containing 13 assertions.
-10 failures, 0 errors.
+Ran 5 tests containing 14 assertions.
+11 failures, 0 errors.

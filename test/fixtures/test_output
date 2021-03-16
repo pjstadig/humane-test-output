@@ -75,9 +75,16 @@ expected: (list? foo)
              :something "a long string?",
              :another-key "and another value"}))
 
+lein test :only pjstadig.humane-test-output.formatting-test/t-formatting
+
+FAIL in (t-formatting) (formatting_test.cljc:32)
+THESE TESTS ARE INTENDED TO FAIL
+expected: {:foo :bar}
+  actual: nil
+
 lein test :only pjstadig.humane-test-output.formatting-test/t-macro-wrapping
 
-FAIL in (t-macro-wrapping) (formatting_test.cljc:33)
+FAIL in (t-macro-wrapping) (formatting_test.cljc:35)
 THIS ONE SHOULD ALSO FAIL
 expected: 1
   actual: 2
@@ -109,6 +116,6 @@ THESE TESTS ARE INTENDED TO FAIL and here
 expected: #pjstadig.humane_test_output.records_test.ARecord{:foo :foo}
   actual: #pjstadig.humane_test_output.records_test.BRecord{:foo :foo}
 
-Ran 4 tests containing 10 assertions.
-10 failures, 0 errors.
+Ran 4 tests containing 11 assertions.
+11 failures, 0 errors.
 Tests failed.
