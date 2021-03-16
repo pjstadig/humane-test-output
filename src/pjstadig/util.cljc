@@ -52,15 +52,17 @@
                             (if (seq diffs)
                               (doseq [[actual [a b]] diffs]
                                 (print-expected actual)
-                                (p/rprint "    diff:")
-                                (if a
-                                  (do (p/rprint " - ")
-                                      (pp/pprint a *out*)
-                                      (p/rprint "          + "))
-                                  (p/rprint " + "))
-                                (when b
-                                  (pp/pprint b *out*))
-                                (p/clear))
+                                (when (and (some? expected) (some? actual))
+                                  (do
+                                    (p/rprint "    diff:")
+                                    (if a
+                                      (do (p/rprint " - ")
+                                          (pp/pprint a *out*)
+                                          (p/rprint "          + "))
+                                      (p/rprint " + "))
+                                    (when b
+                                      (pp/pprint b *out*))
+                                    (p/clear))))
                               (print-expected actual))))))
 
 (defn define-fail-report []
